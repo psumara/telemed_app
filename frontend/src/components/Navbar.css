@@ -1,0 +1,27 @@
+.menu {
+  list-style-type: none;
+  overflow: hidden;
+  margin-right: 50%;
+  margin-top: 2rem;
+}
+.menu li {
+  float: left;
+  margin-right: 4rem;
+  padding: 1rem;
+  border-bottom: solid 0.2rem rgb(2, 12, 14);
+}
+
+.menu li:hover {
+  color: white;
+  border-bottom: solid 0.2rem teal;
+}
+
+.menu li a {
+  font-size: 1.5rem;
+  color: rgb(156, 156, 156);
+  text-decoration: none;
+}
+
+.menu li:hover a {
+  color: teal;
+}

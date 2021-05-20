@@ -1,4 +1,6 @@
+import { useState } from "react";
 import Image from "./Image";
+import Result from "./Result";
 import "./Game.css";
 import catImage from "./images/cat.jpg";
 import dogImage from "./images/dogs.jpg";
@@ -47,12 +49,33 @@ const Game = () => {
     />
   );
 
+  const [resultIsShown, setResultIsShown] = useState(false);
+  const [resultTime, setResultTime] = useState(0);
+
+  const showResultHandler = () => {
+    setResultIsShown(true);
+  };
+
+  const hideResultHandler = () => {
+    setResultIsShown(false);
+  };
+
   var startTime;
   var endTime;
 
+  const resultTimeHandler = (time) => {
+    setResultTime(time);
+  };
+
   function disableButton() {
-    endTime = performance.now();
-    console.log(endTime - startTime);
+    endTime = new Date();
+    var timeDiff = endTime - startTime;
+    resultTimeHandler(timeDiff);
+    showResultHandler();
+    document.getElementById("button1").disabled = false;
+    document.getElementById("button2").disabled = false;
+    document.getElementById("button3").disabled = false;
+    document.getElementById("button4").disabled = false;
   }
 
   let arrayOfButtons = [{ button1 }, { button2 }, { button3 }, { button4 }];
@@ -70,12 +93,17 @@ const Game = () => {
 
     setTimeout(() => {
       button.disabled = false;
-      startTime = performance.now();
+      startTime = new Date();
     }, 3000);
   }
 
   return (
     <div className="game">
+      {resultIsShown && (
+        <Result onClose={hideResultHandler}>
+          {"Your time: " + resultTime + "ms"}
+        </Result>
+      )}
       <div className="images">
         {button1}
         {button2}

@@ -1,18 +1,21 @@
-.game {
+.scoreboard {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  font-size: 5rem;
+  font-size: 3rem;
+  color: teal;
+  margin-top: 5rem;
+  height: 100%;
+}
+
+.scores {
+  font-size: 2.5rem;
+  margin: 0.5rem;
   color: rgb(156, 156, 156);
 }
 
-.images {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.game_button {
+.home_button {
   width: 15rem;
   height: 5rem;
   border-radius: 3rem;
@@ -21,17 +24,17 @@
   background-color: teal;
   font-size: 2rem;
   font-weight: 500;
-  margin-top: 10rem;
   overflow: hidden;
   position: relative;
   text-decoration: none;
   transition: 0.2s transform ease-in-out;
   will-change: transform;
   z-index: 0;
+  margin-top: 10rem;
   cursor: pointer;
 }
 
-.game_button::after {
+.home_button::after {
   background-color: rgb(9, 161, 161);
   border-radius: 3rem;
   content: "";
@@ -48,11 +51,11 @@
   z-index: -1;
 }
 
-.game_button:hover::after {
+.home_button:hover::after {
   transform: translate(0, 0);
 }
 
-.game_button:hover {
+.home_button:hover {
   color: rgb(187, 185, 185);
   transform: scale(1.05);
   will-change: transform;

@@ -11,7 +11,7 @@ const Home = () => {
       </p>
 
       <Link to="/game">
-        <button className="button">Game</button>
+        <button className="button">Przejdź do gry</button>
       </Link>
     </React.Fragment>
   );

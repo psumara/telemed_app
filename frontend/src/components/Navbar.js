@@ -5,13 +5,13 @@ const Navbar = () => {
   return (
     <ul className="menu">
       <li>
-        <Link to="/home">Home</Link>
+        <Link to="/home">Strona główna</Link>
       </li>
       <li>
-        <Link to="/game">Game</Link>
+        <Link to="/game">Gra</Link>
       </li>
       <li>
-        <Link to="/about">About</Link>
+        <Link to="/scoreboard">Najlepsze wyniki</Link>
       </li>
     </ul>
   );

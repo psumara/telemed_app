@@ -7,6 +7,8 @@ import dogImage from "./images/dogs.jpg";
 import elephantImage from "./images/elephant.jpg";
 import giraffeImage from "./images/giraffe.jpg";
 
+const bestResult = 600;
+
 const Game = () => {
   const button1 = (
     <Image
@@ -97,11 +99,25 @@ const Game = () => {
     }, 3000);
   }
 
+  const isBetter = (time) => {
+    var message;
+    if (time < bestResult) {
+      message = "Brawo! Pobiłeś rekord.";
+    } else {
+      const diff = time - bestResult;
+      message = "Musisz być szybszy o  " + diff + "ms aby pobić rekord.";
+    }
+    return message;
+  };
+
   return (
     <div className="game">
       {resultIsShown && (
         <Result onClose={hideResultHandler}>
-          {"Your time: " + resultTime + "ms"}
+          {"Twój czas: " + resultTime + "ms"}
+          <br></br>
+          <br></br>
+          {isBetter(resultTime)}
         </Result>
       )}
       <div className="images">
@@ -111,7 +127,7 @@ const Game = () => {
         {button4}
       </div>
       <button className="game_button" onClick={enableButton}>
-        Start Game
+        Start
       </button>
     </div>
   );

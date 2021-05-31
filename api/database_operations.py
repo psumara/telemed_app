@@ -52,7 +52,11 @@ class DBOperations():
             row_dict = dict(zip(columns, row))
             scores.append(row_dict)
         conn.close()
-        return scores[:num_of_scores]
+
+        if len(scores) < num_of_scores:
+            return scores
+        else:
+            return scores[:num_of_scores]
 
     def submit_score(self, user_name, score):
         conn = self.connection()

@@ -5,12 +5,8 @@
   text-align: center;
   font-size: 3rem;
   color: teal;
-<<<<<<< HEAD
   position: absolute;
   top: 10rem;
-=======
-  margin-top: 5rem;
->>>>>>> f681876... Added footer, changed colors of buttons and scoreboard with dummy scores.
   height: 100%;
 }
 
@@ -35,11 +31,7 @@
   transition: 0.2s transform ease-in-out;
   will-change: transform;
   z-index: 0;
-<<<<<<< HEAD
   margin-top: 5rem;
-=======
-  margin-top: 10rem;
->>>>>>> f681876... Added footer, changed colors of buttons and scoreboard with dummy scores.
   cursor: pointer;
 }
 

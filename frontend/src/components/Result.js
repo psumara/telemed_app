@@ -11,8 +11,13 @@ const ResultOverlay = (props) => {
     <div className="result">
       <div className="content">{props.children}</div>
       <button className="try_again_button" onClick={props.onClose}>
-        Try Again!
+        Spróbuj ponownie
       </button>
+      <a href="/scoreboard">
+        <button className="try_again_button" onClick={props.onClose}>
+          Zobacz najlepsze wyniki
+        </button>
+      </a>
     </div>
   );
 };

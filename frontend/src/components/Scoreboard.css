@@ -1,13 +1,23 @@
-.description {
-  margin-top: 20%;
-  width: 40%;
-  color: rgb(156, 156, 156);
-  font-size: 3rem;
+.scoreboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
+  font-size: 3rem;
+  color: teal;
+  position: absolute;
+  top: 10rem;
+  height: 100%;
 }
 
-.button {
-  width: 17rem;
+.scores {
+  font-size: 2.5rem;
+  margin: 0.5rem;
+  color: rgb(156, 156, 156);
+}
+
+.home_button {
+  width: 15rem;
   height: 5rem;
   border-radius: 3rem;
   border: none;
@@ -21,10 +31,11 @@
   transition: 0.2s transform ease-in-out;
   will-change: transform;
   z-index: 0;
+  margin-top: 5rem;
   cursor: pointer;
 }
 
-.button::after {
+.home_button::after {
   background-color: rgb(9, 161, 161);
   border-radius: 3rem;
   content: "";
@@ -41,11 +52,11 @@
   z-index: -1;
 }
 
-.button:hover::after {
+.home_button:hover::after {
   transform: translate(0, 0);
 }
 
-.button:hover {
+.home_button:hover {
   color: rgb(187, 185, 185);
   transform: scale(1.05);
   will-change: transform;

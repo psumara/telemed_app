@@ -1,9 +1,13 @@
 import pyodbc
 from configparser import ConfigParser
-from datetime import datetime
+import os
+
+# Set config file path
+config_path = os.path.join(os.getcwd(), "config.ini")\
+    .replace("flask", "api")
 
 config_object = ConfigParser()
-config_object.read("config.ini")
+config_object.read(config_path)
 
 server = config_object['SETUP']['server']
 database = config_object['SETUP']['database']

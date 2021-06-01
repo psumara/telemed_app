@@ -1,17 +1,20 @@
-from flask import Flask, render_template
+from flask import Flask, jsonify
 from api.database_operations import DBOperations
 
 app = Flask(__name__)
 db = DBOperations()
 
 
-@app.route('/best_scores.html')
+@app.route('/best_results')
 def best_scores():
     best_scores_data = db.get_best_scores(5)
-    return render_template('best_scores.html', data=best_scores_data)
+    if len(best_scores_data) == 0:
+        return "No records available."
+    else:
+        for score in best_scores_data:
+            score['Score'] = str(score['Score'])
+        return jsonify(best_scores_data)
 
 
-@app.route('/best_score.html')
-def best_score():
-    best_score_data = db.get_best_scores(1)
-    return render_template('best_score.html', data=best_score_data)
+if __name__ == '__main__':
+    app.run(debug=True)

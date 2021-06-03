@@ -14,7 +14,7 @@ const Scoreboard = () => {
       Najlepsze wyniki:
       {DUMMY_SCORES.map((score, index) => (
         <p className="scores">
-          {index + 1}: {score.time}
+          {index + 1}: {score.time + " ms"}
         </p>
       ))}
       <a href="/home">

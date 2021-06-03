@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "./Image";
 import Result from "./Result";
 import "./Game.css";
@@ -7,9 +7,19 @@ import dogImage from "./images/dogs.jpg";
 import elephantImage from "./images/elephant.jpg";
 import giraffeImage from "./images/giraffe.jpg";
 
-const bestResult = 600;
-
 const Game = () => {
+  const [bestResult, setBestResult] = useState(0);
+  const [resultIsShown, setResultIsShown] = useState(false);
+  const [resultTime, setResultTime] = useState(0);
+
+  useEffect(() => {
+    fetch("best_results")
+      .then((res) => res.json())
+      .then((data) => {
+        setBestResult(data);
+      });
+  }, []);
+
   const button1 = (
     <Image
       id="button1"
@@ -51,9 +61,6 @@ const Game = () => {
     />
   );
 
-  const [resultIsShown, setResultIsShown] = useState(false);
-  const [resultTime, setResultTime] = useState(0);
-
   const showResultHandler = () => {
     setResultIsShown(true);
   };
@@ -73,6 +80,7 @@ const Game = () => {
     endTime = new Date();
     var timeDiff = endTime - startTime;
     resultTimeHandler(timeDiff);
+    addScoreHandler(timeDiff);
     showResultHandler();
     document.getElementById("button1").disabled = false;
     document.getElementById("button2").disabled = false;
@@ -101,14 +109,25 @@ const Game = () => {
 
   const isBetter = (time) => {
     var message;
-    if (time < bestResult) {
+    if (time < bestResult[0].Score) {
       message = "Brawo! Pobiłeś rekord.";
     } else {
-      const diff = time - bestResult;
+      const diff = time - bestResult[0].Score;
       message = "Musisz być szybszy o  " + diff + "ms aby pobić rekord.";
     }
     return message;
   };
+
+  function addScoreHandler(score) {
+    console.log("ADD HANDLER ########");
+    fetch("/result", {
+      method: "POST",
+      body: score,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  }
 
   return (
     <div className="game">
